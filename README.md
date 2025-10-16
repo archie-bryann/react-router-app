@@ -87,3 +87,5 @@ This template comes with [Tailwind CSS](https://tailwindcss.com/) already config
 Built with ❤️ using React Router.
 
 https://claude.ai/chat/79bbb7c6-b0fa-4c09-9f40-3792f3726638
+
+https://youtu.be/h7MTWLv3xvw?si=pWCy4rB1kcfv3lvC&t=1411

@@ -3,13 +3,16 @@ import {
   index,
   route,
   layout,
+  prefix,
 } from "@react-router/dev/routes";
 
 export default [
   index("routes/home.tsx"),
+  // ...prefix("pedro", [
   route("dog", "routes/dog.tsx"),
   route("about", "routes/about.tsx"),
   route("post/:postId", "routes/post.tsx"),
+  // ]),
 
   // Nested Routes
   // route("dashboard", "routes/dashboard.tsx", [
@@ -19,7 +22,9 @@ export default [
 
   // layout
   layout("routes/dashboard.tsx", [
-    route("finances", "routes/finances.tsx"),
-    route("personal-info", "routes/personal-info.tsx"),
+    ...prefix("pedro", [
+      route("finances", "routes/finances.tsx"),
+      route("personal-info", "routes/personal-info.tsx"),
+    ]),
   ]),
 ] satisfies RouteConfig;
