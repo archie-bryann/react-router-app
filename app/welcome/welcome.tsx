@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import logoDark from "./logo-dark.svg";
 import logoLight from "./logo-light.svg";
 
@@ -38,6 +39,14 @@ export function Welcome() {
                   </a>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/dog"
+                  prefetch="intent" // Prefetches on hover/focus
+                >
+                  See a random dog
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
