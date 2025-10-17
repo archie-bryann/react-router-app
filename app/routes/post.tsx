@@ -7,6 +7,7 @@ import {
   redirect,
   useFetcher,
   useNavigate,
+  useNavigation,
 } from "react-router";
 
 // Server side loading and action
@@ -50,6 +51,14 @@ export default function Post({ loaderData }: Route.ComponentProps) {
   const navigate = useNavigate();
 
   const isDeleted = fetcher.data?.isDeleted;
+  const isDeleting = fetcher.state !== "idle";
+
+  // const navigation = useNavigation(); // navigation history
+  // const isNavigating = Boolean(navigation.location);
+
+  // if (isNavigating) {
+  //   return <p>Loading...</p>;
+  // }
 
   return (
     <div>
@@ -76,6 +85,7 @@ export default function Post({ loaderData }: Route.ComponentProps) {
       <fetcher.Form method="delete">
         <button type="submit">Delete</button>
       </fetcher.Form>
+      {isDeleting && <p> Deleting post... </p>}
     </div>
   );
 }
