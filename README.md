@@ -89,3 +89,21 @@ Built with ❤️ using React Router.
 https://claude.ai/chat/79bbb7c6-b0fa-4c09-9f40-3792f3726638
 
 https://youtu.be/h7MTWLv3xvw?si=pWCy4rB1kcfv3lvC&t=1411
+
+## Prefetch
+
+```jsx
+import { Link } from "react-router";
+
+// No prefetching (default)
+<Link to="/dashboard">Dashboard</Link>
+
+// Prefetch on user intent (hover/focus)
+<Link to="/dashboard" prefetch="intent">Dashboard</Link>
+
+// Prefetch when link renders
+<Link to="/dashboard" prefetch="render">Dashboard</Link>
+
+// Prefetch when link enters viewport
+<Link to="/dashboard" prefetch="viewport">Dashboard</Link>
+```

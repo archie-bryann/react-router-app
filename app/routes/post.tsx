@@ -1,12 +1,19 @@
 import { useEffect } from "react";
 import type { Route } from "./+types/post";
-import { Form, redirect, useFetcher } from "react-router";
+import {
+  Form,
+  Link,
+  NavLink,
+  redirect,
+  useFetcher,
+  useNavigate,
+} from "react-router";
 
 // Server side loading and action
 // export async function loader() {}
 // export async function action() {}
 
-export async function clientLoader({ params }: Route.LoaderArgs) {
+export async function clientLoader({ params }: Route.ClientLoaderArgs) {
   // not server side loading
   const postId = params.postId;
   const res = await fetch(
@@ -27,7 +34,7 @@ export function HydrateFallback() {
 //   return redirect("/");
 // }
 
-export async function clientAction({ params }: Route.LoaderArgs) {
+export async function clientAction({ params }: Route.ClientActionArgs) {
   try {
     await fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`, {
       method: "DELETE",
@@ -40,6 +47,7 @@ export async function clientAction({ params }: Route.LoaderArgs) {
 
 export default function Post({ loaderData }: Route.ComponentProps) {
   const fetcher = useFetcher();
+  const navigate = useNavigate();
 
   const isDeleted = fetcher.data?.isDeleted;
 
@@ -51,11 +59,20 @@ export default function Post({ loaderData }: Route.ComponentProps) {
           <p>Post Body: {loaderData.body}</p>
         </>
       )}
-
       {/* <Form method="delete">
         <button type="submit">Delete</button>
       </Form> */}
-
+      <NavLink
+        to="/post/1"
+        style={({ isActive, isPending, isTransitioning }) => ({
+          color: isActive ? "red" : "blue",
+        })}
+      >
+        Dog
+      </NavLink>{" "}
+      <br />
+      <Link to="/about">About</Link> <br />
+      <button onClick={() => navigate("/")}>Go to home</button>
       <fetcher.Form method="delete">
         <button type="submit">Delete</button>
       </fetcher.Form>
