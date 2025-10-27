@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Pull Docker Image
-        run: sudo docker pull ${{ secrets.DOCKER_USERNAME }}/react-demo-web:latest
+        run: sudo docker pull ${{ secrets.DOCKER_USERNAME }}/react-router-app:latest
 
       - name: Delete Old Docker Container
         run: sudo docker-compose down || true
