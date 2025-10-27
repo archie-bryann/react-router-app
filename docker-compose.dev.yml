@@ -1,0 +1,19 @@
+services:
+  react-web:
+    image: react-router-app:development
+    build:
+      context: .
+      dockerfile: dev.dockerfile
+    container_name: react-router-app
+    command: npm run dev -- --host
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+
+volumes: {}
