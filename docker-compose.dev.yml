@@ -15,5 +15,9 @@ services:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
       - WATCHPACK_POLLING=true
+    restart: unless-stopped
 
 volumes: {}
+networks:
+  app-network:
+    external: true

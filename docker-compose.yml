@@ -8,5 +8,9 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
+    restart: unless-stopped
 
 volumes: {}
+networks:
+  app-network:
+    external: true
